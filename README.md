@@ -18,8 +18,6 @@ Evaluates multiple metrics such as Accuracy, Precision, Recall, Specificity, AUC
 
 Saves the trained model using Joblib for later inference
 
-Plots ROC curves for visual performance comparison
-
 
 🧠 Model Architecture
 
@@ -36,7 +34,6 @@ class GCN(torch.nn.Module):
         super(GCN, self).__init__()
         self.conv1 = GCNConv(in_channels, hidden_channels)
         self.conv2 = GCNConv(hidden_channels, out_channels)
-
     def forward(self, data):
         x, edge_index = data.x, data.edge_index
         x = self.conv1(x, edge_index)
@@ -64,21 +61,7 @@ The model is trained for 200 epochs using the Adam optimizer.
 
 After training, the model’s state is saved as gcn_model.joblib.
 
-Performance metrics include:
 
-✅ Accuracy
-
-✅ Precision
-
-✅ Recall (Sensitivity)
-
-✅ Specificity
-
-✅ F1 Score
-
-✅ ROC-AUC
-
-✅ Prediction Speed
 
 📊 Results
 
@@ -104,24 +87,6 @@ scikit-learn
 
 pandas, numpy, matplotlib
 
-joblib
-
-💾 Model Saving
-
-After training:
-
-joblib.dump(model.state_dict(), "gcn_model.joblib")
-
-
-This allows easy loading and inference in future sessions.
-
-🧭 Future Work
-
-Integrate real-time detection with live network monitoring
-
-Deploy model in an edge-based IDS for AMI systems
-
-Explore Graph Attention Networks (GAT) for enhanced learning
 
 👩‍💻 Author
 
